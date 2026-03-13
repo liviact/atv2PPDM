@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, TextInput, Pressable, Alert, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
 
 export default function App() {
@@ -17,61 +18,63 @@ export default function App() {
   };
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#001f4d' }}>
-      <View style={styles.container}>
-        <StatusBar style="light" />
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#001f4d' }} edges={['top', 'bottom']}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <View style={styles.container}>
+          <StatusBar style="light" />
 
-        <Text style={styles.titulo}>Cadastro de usuário</Text>
+          <Text style={styles.titulo}>Cadastro de usuário</Text>
 
-        <View style={styles.card}>
-          <Text style={styles.label}>Nome</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite seu nome"
-            placeholderTextColor="#cccccc"
-            value={nome}
-            onChangeText={setNome}
-          />
+          <View style={styles.card}>
+            <Text style={styles.label}>Nome</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Digite seu nome"
+              placeholderTextColor="#cccccc"
+              value={nome}
+              onChangeText={setNome}
+            />
 
-          <Text style={styles.label}>E-mail</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite seu e-mail"
-            placeholderTextColor="#cccccc"
-            value={email}
-            onChangeText={setEmail}
-          />
+            <Text style={styles.label}>E-mail</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Digite seu e-mail"
+              placeholderTextColor="#cccccc"
+              value={email}
+              onChangeText={setEmail}
+            />
 
-          <Text style={styles.label}>Telefone</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite seu telefone"
-            placeholderTextColor="#cccccc"
-            value={telefone}
-            onChangeText={setTelefone}
-          />
+            <Text style={styles.label}>Telefone</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Digite seu telefone"
+              placeholderTextColor="#cccccc"
+              value={telefone}
+              onChangeText={setTelefone}
+            />
 
-          <Text style={styles.label}>Data de nascimento</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="DD/MM/AAAA"
-            placeholderTextColor="#cccccc"
-            value={dataNascimento}
-            onChangeText={setDataNascimento}
-          />
+            <Text style={styles.label}>Data de nascimento</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="DD/MM/AAAA"
+              placeholderTextColor="#cccccc"
+              value={dataNascimento}
+              onChangeText={setDataNascimento}
+            />
 
-          <Pressable
-            style={({ pressed }) => [
-              { backgroundColor: pressed ? '#72839b' : '#4080c0' },
-              styles.botao
-            ]}
-            onPress={salvarCadastro}
-          >
-            <Text style={styles.textoBotao}>Salvar</Text>
-          </Pressable>
+            <Pressable
+              style={({ pressed }) => [
+                { backgroundColor: pressed ? '#72839b' : '#4080c0' },
+                styles.botao
+              ]}
+              onPress={salvarCadastro}
+            >
+              <Text style={styles.textoBotao}>Salvar</Text>
+            </Pressable>
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
   titulo: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#001f4d',
+    color: '#ffffff',
     marginBottom: 20,
   },
   card: {
